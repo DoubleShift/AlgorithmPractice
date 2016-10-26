@@ -1,0 +1,42 @@
+/**
+ * Created by dbche on 2016/9/28.
+ * 20% AC
+ */
+
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+
+public class Main {
+    public static void main(String args[]) {
+
+
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int m = in.nextInt();
+
+        ArrayList list = new ArrayList();
+
+        for(int i = 1; i<= n;i++){
+            list.add(String.valueOf(i));
+        }
+
+        System.out.println(getM(list, m));
+        in.close();
+    }
+
+    public static String getM(ArrayList list,int m){
+        Collections.sort(list);
+
+       return list.get(m-1).toString();
+    }
+
+
+}
+
+
+
+
+

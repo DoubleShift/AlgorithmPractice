@@ -1,0 +1,135 @@
+﻿随机输入的自然数n
+输出
+对于每个测试实例，要求输出大于n的下一个对称数字
+
+样例输入
+451
+3840
+3363
+999
+样例输出
+454
+3883
+3443
+1001
+查找大于给定整数的最小回文数。
+http://www.cnblogs.com/xudong-bupt/p/4015226.html
+
+
+    import java.util.Scanner;
+
+    class SmallestPlalindrome{
+        private int n;
+        SmallestPlalindrome(int n){
+            this.n = n;
+
+        }
+
+        public int result(){
+            String strN = String.valueOf(n);
+
+            StringBuilder left = new StringBuilder();
+            StringBuilder right = new StringBuilder();
+            StringBuilder fin = new StringBuilder();
+
+            int result = 0;
+
+            if (n<9){
+                result = n+1;
+            }else if(isNumNine(n)){
+                result = n+2;
+            }else if( strN.length() % 2 ==1 ){ //奇数
+
+                left.append(strN.substring(0,strN.length()/2));
+                right.append(strN.substring((strN.length()/2)+1));
+
+                if(isReverseBigger(left.toString(),right.toString())){
+                    fin.append(left);
+                    fin.append(strN.charAt(strN.length()/2));
+                    fin.append(left.reverse().toString());
+
+                }else{
+                    StringBuilder t = new StringBuilder();
+                    t.append(left);
+                    t.append(strN.charAt(strN.length()/2));
+                    int num = Integer.parseInt(t.toString()) +1;
+                    t.setLength(0);
+                    t.append(num);
+
+                    fin.append(t);
+                    fin.append(t.deleteCharAt(t.length()-1).reverse().toString());//进位
+                }
+
+                result = Integer.parseInt(fin.toString());
+            }else{ //偶数
+
+                left.append(strN.substring(0,strN.length()/2));
+                right.append(strN.substring(strN.length()/2));
+                if (!isReverseBigger(left.toString(), right.toString())) {
+                    int num = Integer.parseInt(left.toString()) + 1;
+                    left.setLength(0);
+                    left.append(num);
+                }
+                fin.append(left.toString());
+                fin.append(left.reverse().toString());
+                result = Integer.parseInt(fin.toString());
+
+            }
+
+            return result;
+        }
+
+        public boolean isPalindrome(int n) {
+            String str = String.valueOf(n);
+            int i = 0;
+            int j = str.length() - 1;
+            while (i < j) {
+                if (str.charAt(i++) != str.charAt(j--))
+                    return false;
+            }
+            return true;
+        }
+
+        private boolean isNumNine(int n){
+            String str = String.valueOf(n);
+            for(int i =0;i<str.length();i++){
+                if (str.charAt(i) != '9'){
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private boolean isReverseBigger(String left,String right){
+            StringBuilder leftReverse = new StringBuilder(left);
+            if (leftReverse.reverse().toString().compareTo(right) > 0)
+                return true;
+            return false;
+        }
+    }
+
+
+    public class Main {
+
+
+        public static void main(String args[]) {
+//            for(int i=0;i<10000;i++){
+//                SmallestPlalindrome p = new SmallestPlalindrome(i);
+//                System.out.println(i + " -> "+p.result());
+//            }
+
+            Scanner in = new Scanner(System.in);
+            while(in.hasNext()){
+                SmallestPlalindrome p = new SmallestPlalindrome(in.nextInt());
+                System.out.println(p.result());
+            }
+
+            in.close();
+        }
+
+    }
+
+
+
+
+

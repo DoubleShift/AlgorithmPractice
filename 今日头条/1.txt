@@ -1,0 +1,44 @@
+/**
+ * Created by dbche on 2016/9/28.
+ * 40% AC
+ */
+
+
+import java.util.Scanner;
+
+
+public class Main {
+    public static void main(String args[]) {
+        Scanner in = new Scanner(System.in);
+        String str  = in.nextLine();
+        int count = 0;
+
+        int length = str.length();
+        for(int i = 0; i <length;i++){
+            if(shift(str,i)){
+                count+=1;
+            }
+        }
+
+        System.out.println(count);
+        in.close();
+    }
+
+    public static boolean shift(String str,int x){
+        StringBuffer strBuf = new StringBuffer();
+
+        if(x == 0) return true;
+
+        strBuf.append(str.substring(x));
+        strBuf.append(str.substring(0,x));
+        if(str.equals(strBuf.toString())){
+            return true;
+        }
+        return false;
+    }
+}
+
+
+
+
+

@@ -1,0 +1,49 @@
+/**
+ * Created by dbche on 2016/9/28.
+ * 100% AC
+ */
+
+
+
+
+import java.util.Scanner;
+
+
+public class Main {
+    public static void main(String args[]) {
+
+
+        Scanner in = new Scanner(System.in);
+
+        while(in.hasNext()){
+            double hours = in.nextDouble();
+            System.out.println(String .format("%.2f", calCost(hours)));
+
+        }
+
+
+        in.close();
+    };
+
+    public static double calCost(double hours){
+        double cost = 5.0;
+
+        if(hours > 3.0){
+            cost += (hours - 3.0) * 2;
+        };
+
+        if(cost > 50){
+            cost = 50;
+        }
+        return cost;
+    };
+
+
+
+
+}
+
+
+
+
+

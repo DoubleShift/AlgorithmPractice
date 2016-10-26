@@ -1,0 +1,64 @@
+输入
+两个字符串
+输出
+true / false
+
+样例输入
+FDJ  DJDF
+MIJJ  MOJI
+样例输出
+true
+false
+
+    import java.util.Scanner;
+
+
+
+    public class Main {
+
+
+        public static void main(String args[]) {
+            String result = "";
+            Scanner in = new Scanner(System.in);
+            while(in.hasNext()){
+                result = "true";
+                String left = in.next();
+                String right = in.next();
+
+                int[] leftArray = new int[26];
+                int[] rightArray = new int[26];
+
+                for(int i =0;i<26;i++){
+                    leftArray[i] = 0;
+                    rightArray[i] = 0;
+
+                }
+                for(int i=0;i<left.length();i++){
+                    int ascii = (int)left.charAt(i) -65;
+                    leftArray[ascii] = 1;
+                }
+
+                for(int i=0;i<right.length();i++){
+                    int ascii = (int)right.charAt(i) -65;
+                    rightArray[ascii] = 1;
+                }
+
+                for(int i=0;i<26;i++){
+                    if(leftArray[i] != rightArray[i]){
+                        result = "false";
+                        break;
+                    }
+                }
+                System.out.println(result);
+
+            }
+
+            in.close();
+        }
+
+    }
+
+
+
+
+

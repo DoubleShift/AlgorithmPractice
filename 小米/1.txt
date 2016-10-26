@@ -1,0 +1,84 @@
+/**
+ * Created by dbche on 2016/9/23.
+ */
+
+
+import java.util.Scanner;
+
+class Tree{
+    class Node{
+        int data=0;
+        Node left=null;
+        Node right=null;
+    }
+
+    private Node root = new Node();
+
+    public void init(){
+
+        Scanner in = new Scanner(System.in);
+        int line = in.nextInt();
+        for(int i = 1;i<line;i++){
+            int parent = in.nextInt();
+            int child = in.nextInt();
+
+            insert(root,parent,child);
+        }
+
+        System.out.println(deep(root));
+
+
+
+    }
+
+    public boolean insert(Node node,int parent,int child){
+        if(node.data == parent){
+
+            if(node.left == null){
+                node.left = new Node();
+                node.left.data = child;
+                return true;
+            }else if(node.right == null){
+                node.right = new Node();
+                node.right.data = child;
+                return true;
+            }
+        }
+
+        if(insert(node.left,parent,child)) {
+            return true;
+        }
+        else {
+            insert(node.right,parent,child);
+            return true;
+        }
+
+
+
+    }
+
+
+
+    public int deep(Node node ) {
+        int h1, h2;
+        if (node == null) {
+            return 0;
+        } else {
+            h1 = deep(node.left);
+            h2 = deep(node.right);
+            return (h1 < h2) ? h2 + 1 : h1 + 1;
+        }
+    }
+}
+
+public class Main {
+    public static void main(String args[]) {
+        Tree tree = new Tree();
+        tree.init();
+    }
+}
+
+
+
+
+

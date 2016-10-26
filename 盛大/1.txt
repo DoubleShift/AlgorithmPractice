@@ -1,0 +1,39 @@
+/**
+ * Created by dbche on 2016/9/28.
+ * 0% AC
+ */
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String args[]) {
+        List<String[]> items = new ArrayList<String[]>();
+
+        Scanner in = new Scanner(System.in);
+        String str = in.nextLine();
+        String[] type = str.split("\\s+");
+
+        str = in.nextLine();
+        String[] column = str.split("\\s+");
+
+        while(in.hasNext()){
+            str = in.nextLine();
+            String[] item = str.split("\\s+");
+            items.add(item);
+        }
+
+        System.out.println(column.toString());
+        for(int i=0;i<items.size();i++){
+            System.out.println(items.get(i).toString());
+        }
+        in.close();
+    };
+
+}
+
+
+
+
+

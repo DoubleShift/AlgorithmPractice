@@ -1,0 +1,28 @@
+/**
+ * Created by dbche on 2016/9/21.
+ */
+
+
+import java.util.Scanner;
+
+
+
+
+public class Main {
+    public static void main(String args[]) {
+        Scanner in = new Scanner(System.in);
+        String line = in.nextLine();
+        String newline = "";
+        String[] words = line.split(" ");
+
+        for(int i = words.length-1;i>=0;i--){
+            newline = newline.concat(words[i] + " ");
+        }
+        System.out.println(newline);
+    }
+}
+
+
+
+
+
